@@ -1,0 +1,5 @@
+bin/
+depfiles/
+.DS_Store
+.settings*
+*.jar
