@@ -3,9 +3,6 @@ samples-geometry-api-java
 
 A collection of samples for the [Esri Java Geometry Library] (https://github.com/Esri/geometry-api-java)
 
-## Features
-Provides code samples for the Esri Java Geometry Library.
-
 ## Instructions
 Start out by navigating to samples and following the instructions provided with each sample.
 
@@ -13,6 +10,7 @@ Start out by navigating to samples and following the instructions provided with 
 
 * Java JDK 1.6 or greater.
 * [Apache Ant](http://ant.apache.org/) build system.
+* [Apache Maven](http://maven.apache.org/) build system.
 
 ## Documentation
 * [geometry-api-java/Wiki](https://github.com/Esri/geometry-api-java/wiki/)
