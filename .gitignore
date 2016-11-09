@@ -1,5 +1,6 @@
 bin/
 depfiles/
+target/
 .DS_Store
 .settings*
 *.jar
