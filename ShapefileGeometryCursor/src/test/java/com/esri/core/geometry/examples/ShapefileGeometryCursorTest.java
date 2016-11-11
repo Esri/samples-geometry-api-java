@@ -10,8 +10,41 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-public class ShapefileGeometryCursorTest  {
+public class ShapefileGeometryCursorTest {
 
+    /**
+     * The shapefile reader implements {@link GeometryCursor} so can be used directly as input to spatial operations
+     */
+    @Test
+    public void spatialOpsWithShapefileAsGeometryCursor() throws IOException {
+
+        {
+            File file = getTestShapefile("polygons");
+
+            ShapefileGeometryCursor polygonShapefileCursor = new ShapefileGeometryCursor(file);
+            GeometryCursor unionCursor = OperatorUnion.local().execute(polygonShapefileCursor, null, null);
+
+            Geometry dissolvedGeometry = unionCursor.next();
+            Polygon multiPoly = (Polygon) dissolvedGeometry;
+            assertTrue(multiPoly.getExteriorRingCount() == 4); //the test file has three polys, one with two outer rings
+            assertTrue(unionCursor.next() == null);  //should only be one polygon
+        }
+
+        {
+            File file = getTestShapefile("polylines");
+
+            ShapefileGeometryCursor polylineShapefileCursor = new ShapefileGeometryCursor(file);
+            GeometryCursor bufferCursor = OperatorBuffer.local().execute(polylineShapefileCursor, null, new double[]{0.5}, true, null);
+
+            Polygon polygon = (Polygon) bufferCursor.next();
+            assertTrue(bufferCursor.next() == null);//should only be one polygon as union was specified on buffer
+            assertTrue(polygon.getExteriorRingCount() == 3); //test file has three lines
+        }
+    }
+
+    /**
+     * Read the four main types of shapefile
+     */
     @Test
     public void shapefileReaderTest() throws IOException {
 

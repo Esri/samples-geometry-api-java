@@ -148,8 +148,6 @@ public class ShapefileGeometryCursor extends GeometryCursor {
     private Geometry.Type geometryTypeFromShpType(int shpTypeId) {
         int shpType = shpTypeId % 10;
 
-        Geometry.Type type;
-
         switch (shpType) {
             case 1: //Point
                 return Geometry.Type.Point;
