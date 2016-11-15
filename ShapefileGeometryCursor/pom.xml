@@ -2,12 +2,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.esri.geometry.examples</groupId>
-	<artifactId>OperatorSimplifyOGCTest</artifactId>
+	<artifactId>ShapefileGeometryCursor</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>Samples for Esri Geometry API for Java</name>
-	<description>Samples for the Esri Geometry API for Java.</description>
+    <name>Sample using Esri Geometry API for Java to work with shapefiles</name>
+	<description>Sample using Esri Geometry API for Java to work with shapefiles</description>
 
 	<url>https://github.com/Esri/samples-geometry-api-java</url>
 
@@ -21,10 +21,10 @@
 
 	<developers>
 		<developer>
-			<id>stolstov</id>
-			<name>Sergey Tolstov</name>
-			<organization>Esri</organization>
-			<organizationUrl>http://www.esri.com</organizationUrl>
+			<id>willtemperley</id>
+			<name>Will Temperley</name>
+			<organization></organization>
+			<organizationUrl></organizationUrl>
 			<roles>
 				<role>developer</role>
 			</roles>
@@ -89,8 +89,6 @@
 		<java.target.version>1.6</java.target.version>
 
 		<!-- dependency versions -->
-		<json.version>20140107</json.version>
-		<jackson.version>1.9.13</jackson.version>
 		<geometry.version>1.2.1</geometry.version>
 
 		<!-- plugin versions -->
@@ -101,21 +99,17 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>${json.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-core-asl</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>com.esri.geometry</groupId>
 			<artifactId>esri-geometry-api</artifactId>
 			<version>${geometry.version}</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<directory>${project.basedir}/target</directory>
@@ -123,8 +117,7 @@
 		<finalName>${project.artifactId}-${project.version}</finalName>
 		<testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory>
 		<sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
-		<!--<scriptSourceDirectory>src/main/scripts</scriptSourceDirectory>-->
-		<!--<testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>-->
+		<testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
 		<resources>
 			<resource>
 				<directory>${project.basedir}/src/main/resources</directory>
@@ -162,7 +155,7 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>${javadoc.plugin.version}</version>
 				<configuration>
-					<links>
+                    <links>
 						<link>http://help.arcgis.com/EN/sdk/10.0/Java_AO_ADF/api/arcobjects</link>
 						<link>http://docs.oracle.com/javase/6/docs/api/</link>
 					</links>
