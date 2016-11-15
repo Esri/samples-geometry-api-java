@@ -6,8 +6,8 @@
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>Samples for Esri Geometry API for Java</name>
-	<description>Samples for the Esri Geometry API for Java.</description>
+    <name>Sample using Esri Geometry API for Java to work with shapefiles</name>
+	<description>Sample using Esri Geometry API for Java to work with shapefiles</description>
 
 	<url>https://github.com/Esri/samples-geometry-api-java</url>
 
